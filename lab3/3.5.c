@@ -11,34 +11,34 @@ int main(void)
 {
   void sigINT_handler(int sig);
 
-	if(signal(SIGINT, sigINT_handler) == SIG_ERR) 
-	{
-		perror("Signal");
-		exit(EXIT_SUCCESS);
+        if(signal(SIGINT, sigINT_handler) == SIG_ERR)
+        {
+                perror("Signal");
+                exit(EXIT_SUCCESS);
   }
-  
+
   int number;
   int x;
   int pipes[2];
   pipe(pipes);
   pid_t pid = fork();
-  
+
   if(pid==0)
   {
     printf("Enter a number : ");
-		scanf("%d", &num);
-		close(pipes[0]);
-		write(pipes[1], &number, sizeof(number));
-		exit(EXIT_SUCCESS);
+                scanf("%d", &number);
+                close(pipes[0]);
+                write(pipes[1], &number, sizeof(number));
+                exit(EXIT_SUCCESS);
   }
-  
+
   else if(pid>0)
   {
-    close(pips[1];
+    close(pipes[1]);
     read(pipes[0], &x, sizeof(int));
-		close(pipes[0]);
-          
-          if(x <=3)
+                close(pipes[0]);
+
+  if(x <=3)
              {
                if(x == 1)
                {
@@ -50,7 +50,7 @@ int main(void)
                }
                exit(EXIT_SUCCESS);
              }
-             
+
              if(x > 3)
           {
             for(int i = 2; i <= x/2; i++)
@@ -63,16 +63,16 @@ int main(void)
               else
               {
                printf("%d is a prime number.\n", x);
-					     exit(1); 
+                                             exit(1);
               }
             }
           }
-          print("Done");
-          
+          printf("Done");
+          }
           else
           {
             perror("Error");
           }
     return 0;
  }
-    
+
