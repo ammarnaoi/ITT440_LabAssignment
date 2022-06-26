@@ -1,4 +1,4 @@
-#include <stdio.h>
+include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -6,15 +6,15 @@
 int main ()
 {
   pid_t wpid;
-  
+  char name[10];
+
   for(int i = 0; i < 4; i++)
   {
     pid_t pid = fork();
-    
     if(pid == 0)
     {
-      printf("What is your name? > ");
-      scanf("%s", name);
+      printf("Enter your name:  ");
+      fgets(name, 10, stdin);
       printf("Your name is %s\n", name);
       exit(0);
     }
@@ -29,6 +29,6 @@ int main ()
     }
   }
   printf("Job is done.\n");
-  
-  return EXIT_SUCCESS:
+  return EXIT_SUCCESS;
 }
+
